@@ -13,4 +13,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: docker build
-        run: docker build -t my-app:latest .
+        run: docker build -t sanibs23/my-app:latest .
+
+      - name: docker login
+        run: echo ${{ secrets.docker_hub_token }} | docker login -u sanibs23 --password-stdin
+
+      - name: docker push
+        run: |
+          docker push sanibs23/my-app:latest
