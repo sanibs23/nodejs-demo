@@ -1,0 +1,16 @@
+name: Develop workflow
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: docker build
+        run: docker build -t my-app:latest .
